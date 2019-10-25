@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html height: 100%;>
+    <head>
+        <title>FoodSavior</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link rel="stylesheet" href="/stylesheets/prof.css">
+        <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    </head>
+   
+    <body style="padding-top: 65px; background-image:url('https://images.unsplash.com/photo-1542320260-f8f651de8c12?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');background-size:cover;width:100vw;height:100vh;">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Food Savior</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(!currentUser){ %>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Sign Up</a></li>
+                    <% } else { %>
+                        <li><a href="#"><%= currentUser.username %></a></li>
+                        <li><a href="/logout">Logout</a></li>
+                     <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+     <div>
+        <h1 style="color: white;"> My Kitchen !!! </h1>
+        <%=
+        profile[0].username%>
+     </div>
+     
+         <div id="container" class="jumbotron" style="width: 30%; margin: auto 700px auto 100px; background: rgba(255, 255, 255, 0.3)">
+             <div>
+                 <h3 align="left|right|center|justify" style="text-align: center;"></i>My Pantry</h3>
+             </div>
+            <div class="col-md-12 col-sm-12" style="margin: 10px auto 10px auto">
+                <div class="caption1">
+                    <form action="/search/<%=profile[0].id%>" method="POST">
+                        <input type="text" id="newIngredient" name="newIngredient" placeholder="Add New Ingredient" style="width:100%;font-size:18px;">
+                        <input type="submit" value="Add" class="btn btn-md btn-success btn-block" style="float:right;">
+                    </form>
+                </div>
+            </div>
+            
+            <% profile[0].ingredients.forEach(function(ingredient){ %>
+                <div class="col-md-12 col-sm-12">
+                    <div class="thumbnail" id="ingredients">
+                       <div class="caption2">
+                            <form action="/search/<%=profile[0].id%>?_method=DELETE" method="POST">
+                                <h4 style="display: inline"><%= ingredient %></h4>
+                                <input type="hidden" id="deleteIngredient" name="deleteIngredient" value="<%= ingredient %>">
+                                <input type="submit" value="Remove" style= "float:right;" class="btn  btn-sm btn-success">
+                            </form>
+                       </div>
+                    </div>
+                </div>
+            <% }); %>
+             
+                <div class="col-md-12 col-sm-12" style="margin: 10px auto 10px auto">   
+                    <div class="caption3">
+                        <form action="/results" method="GET">
+                            <% var list = ""; %>
+                            <% profile[0].ingredients.forEach(function(ingredient){ %>
+                                <% list = list  + ingredient + ", "; %>
+                            <% }); %>
+                            <% console.log(list); %>
+                            
+                            <input type="hidden" id="search" name="search" value="<%= list %>">
+                            <input type="submit" value="Look for recipes" class="btn btn-success" style="text-align: center;">
+                        </form>
+                    </div>
+                </div>
+        </div>
+
+   
+<script src="/scripts/profiles.js></script>
+    
+<% include ./partials/footer %>

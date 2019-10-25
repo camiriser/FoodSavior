@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FoodSavior</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/home.css">
+         <link rel="stylesheet" href="/stylesheets/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merienda:400:700" rel="stylesheet">
+    </head>
+   
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Food Savior</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if(!currentUser){ %>
+                            <li><a href="/login">Login</a></li>
+                            <li><a href="/register">Sign Up</a></li>
+                        <% } else { %>
+                            <li><a href="#"><%= currentUser.username %></a></li>
+                            <li><a href="/logout">Logout</a></li>
+                         <% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    
+        <div id="landing-header">
+            <h1>FoodSavior</h1>
+    		<div  id="advertisement">
+    		    <h3>Save money, cooking delicious recipes at home with the ingredients you already have </h3>
+    		</div>
+    		<a href="/register" class="btn btn-success btn-lg"> Get Started!</a>
+        </div>
+    
+    <ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    
+<% include ./partials/footer %>

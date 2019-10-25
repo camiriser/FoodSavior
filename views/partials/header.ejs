@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Food_Savior</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+        
+    </head>
+    
+   <body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Food Savior</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(!currentUser){ %>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Sign Up</a></li>
+                    <% } else { %>
+                        <li><a href="#"><%= currentUser.username %></a></li>
+                        <li><a href="/logout">Logout</a></li>
+                     <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>

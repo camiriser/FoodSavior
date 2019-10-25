@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <title>Food_Savior</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+        
+    </head>
+    
+   <body style="background-image:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://bistro3d.com/wp-content/uploads/2018/01/cropped-111111.jpg');background-size:cover;width:100vw;height:100vh;">
+       
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Food Savior</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <% if(!currentUser){ %>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Sign Up</a></li>
+                    <% } else { %>
+                        <li><a href="#"><%= currentUser.username %></a></li>
+                        <li><a href="/logout">Logout</a></li>
+                     <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+     <div class="body-background body-background--image">    
+        <header class="jumbotron" style="background: rgba(255, 255, 255, 0.5)">
+             <div class="container">
+                 <h1 style="color: white;">Search For a Recipe</h1>
+                 <p style="color: white;">Start cooking with the ingredients you already have!</p>
+             </div>
+        </header>
+    
+         <div class="container"  style="width: 40%; margin: auto 700px auto 30px;">
+             <div class="row">
+                <h2 style="text-align: center; color: white;">Input the ingredients you have separated by commas</h2>
+                <div style="width: 100%; margin: 25px auto;">
+                    <h4><%= currentUser.username%> </h4>
+                    <form action="/results" method="GET">
+                        <div class="form-group" style="width: 100%; margin: 0 auto 0 auto;">
+                            <input type="text" placeholder="Ex: apples, lecttuce, chicken" name="search" style="width:100%;font-size:20px;">
+                        </div>
+                         <div class="form-group" style="width: 100%; margin: 10px auto 10px auto;">
+                            <input type="submit" value="Search" class="btn btn-md btn-success btn-block">
+                        </div>
+                        </div>
+                        <div class="form-group" style="width: 100%; margin: 10px auto 10px auto;">
+                           <h2 style="text-align: center; color: white;"> Go to your pantry when you can keep record of all the food you already have and look for recipes directly with 
+                                your inventory</h2>
+                        </div>
+                        <div class="form-group" style="margin: 10px auto 10px auto; float:center;text-align: center">
+                            <a href="/search/<%=userID%>" class="btn btn-md btn-success"> Go to my Pantry </a>
+                        </div> 
+                    </form>
+                </div>           
+            </div>
+        </div>
+    </div>
+<% include ./partials/footer %>
+

@@ -1,0 +1,45 @@
+h3{
+    color: white;
+    background: #696969;
+    margin: 0 auto 0 auto;
+    font-size: 24px;
+    font-weight:normal;
+    padding: 25px 50px 50px 25px; 
+    position:relative;
+    min-width: 0px;
+    min-height:0px;
+    width: 100%;
+}
+
+input[type=submit]{
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  position:relative;
+  top:50%;
+}
+
+#container{
+    width: 360px;
+    margin: 100px auto;
+    box-shadow: 0 0 3px rgba(0,0,0, 0.1);
+    float: left;
+    min-height: 5px;
+    position: relative;
+}
+
+#newIngredient{
+     font-size: 18px;
+     margin: 0px 13px 13px 0px;
+     background: #ffffff;
+}
+
+
+#add{
+    width: 100%;
+    margin:  20px auto 20px auto; 
+}
+
